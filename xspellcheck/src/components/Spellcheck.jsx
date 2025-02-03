@@ -38,7 +38,7 @@ const Spellcheck = () => {
         placeholder="Enter text.."
       />
       <br />
-      {wrongword && <>Did you mean: {wrongword}</>}
+      {wrongword && <>Did you mean: {wrongword}?</>}
     </>
   );
 };
