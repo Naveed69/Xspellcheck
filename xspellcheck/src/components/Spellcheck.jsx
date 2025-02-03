@@ -9,15 +9,8 @@ const Spellcheck = () => {
   };
 
   const [userInput, setUserInput] = useState("");
-  const [spellwrong, setSpellworng] = useState(false);
   const [wrongword, setWrongWord] = useState("");
-  //   useEffect(() => {
-  //     if (userInput) {
-
-  //     }
-  //   }, [userInput]);
-  const handleChange = (e) => {
-    setUserInput(e.target.value);
+  useEffect(() => {
     let a = userInput.split(" ");
     let correctwords = a.map((word) => {
       const correctword = customDictionary[word.toLowerCase()];
@@ -25,9 +18,13 @@ const Spellcheck = () => {
     });
 
     const displayWord = correctwords.find((word, idx) => {
-      return word != a[idx];
+      return word !== a[idx];
     });
     setWrongWord(displayWord || "");
+  }, [userInput]);
+  const handleChange = (e) => {
+    let val = e.target.value;
+    setUserInput(val);
   };
   return (
     <>
